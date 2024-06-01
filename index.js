@@ -1,6 +1,6 @@
 const express=require('express');
 const app=express();
-const PORT=3500;
+const PORT=process.env.PORT || 4000;
 const mongoose=require('mongoose')
 const connectDB=require('./config/configDB');
 const hoteldataAddedintoDB=require('./Router/hotel.route')
@@ -24,7 +24,7 @@ app.use('/api/hotelget',singlehotel)
 app.use('/api/auth',signup)
 app.use('/api/wishlist',wishlist)
 mongoose.connection.once("open",()=>{
-  app.listen(process.env.PORT || PORT,()=>{
+  app.listen(PORT,()=>{
     console.log("server is running")
   })
 })
